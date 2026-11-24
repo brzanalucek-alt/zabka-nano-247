@@ -1,0 +1,165 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Produkt 01",
+      "price": 22.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem1/640/480"
+    },
+    {
+      "id": 2,
+      "name": "Produkt 02",
+      "price": 24.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem2/640/480"
+    },
+    {
+      "id": 3,
+      "name": "Produkt 03",
+      "price": 27.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem3/640/480"
+    },
+    {
+      "id": 4,
+      "name": "Produkt 04",
+      "price": 29.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem4/640/480"
+    },
+    {
+      "id": 5,
+      "name": "Produkt 05",
+      "price": 32.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem5/640/480"
+    },
+    {
+      "id": 6,
+      "name": "Produkt 06",
+      "price": 34.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem6/640/480"
+    },
+    {
+      "id": 7,
+      "name": "Produkt 07",
+      "price": 37.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem7/640/480"
+    },
+    {
+      "id": 8,
+      "name": "Produkt 08",
+      "price": 39.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem8/640/480"
+    },
+    {
+      "id": 9,
+      "name": "Produkt 09",
+      "price": 42.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem9/640/480"
+    },
+    {
+      "id": 10,
+      "name": "Produkt 10",
+      "price": 44.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem10/640/480"
+    },
+    {
+      "id": 11,
+      "name": "Produkt 11",
+      "price": 47.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem11/640/480"
+    },
+    {
+      "id": 12,
+      "name": "Produkt 12",
+      "price": 49.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem12/640/480"
+    },
+    {
+      "id": 13,
+      "name": "Produkt 13",
+      "price": 52.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem13/640/480"
+    },
+    {
+      "id": 14,
+      "name": "Produkt 14",
+      "price": 54.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem14/640/480"
+    },
+    {
+      "id": 15,
+      "name": "Produkt 15",
+      "price": 57.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem15/640/480"
+    },
+    {
+      "id": 16,
+      "name": "Produkt 16",
+      "price": 59.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem16/640/480"
+    },
+    {
+      "id": 17,
+      "name": "Produkt 17",
+      "price": 62.49,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem17/640/480"
+    },
+    {
+      "id": 18,
+      "name": "Produkt 18",
+      "price": 64.99,
+      "description": "Przykładowy opis produktu. Zmień nazwę, opis, cenę i zdjęcie w panelu administratora.",
+      "image": "https://picsum.photos/seed/shopitem18/640/480"
+    }
+  ],
+  "reviews": [
+    {
+      "nick": "@klient_demo1",
+      "stars": 5,
+      "text": "Przykładowa opinia demonstracyjna."
+    },
+    {
+      "nick": "@klient_demo2",
+      "stars": 4,
+      "text": "Przykładowa opinia demonstracyjna."
+    },
+    {
+      "nick": "@klient_demo3",
+      "stars": 5,
+      "text": "Przykładowa opinia demonstracyjna."
+    },
+    {
+      "nick": "@klient_demo4",
+      "stars": 4,
+      "text": "Przykładowa opinia demonstracyjna."
+    },
+    {
+      "nick": "@klient_demo5",
+      "stars": 5,
+      "text": "Przykładowa opinia demonstracyjna."
+    }
+  ],
+  "rules": [
+    "Przed złożeniem zamówienia sprawdź produkty i ilości w koszyku.",
+    "Rabat nalicza się od 5 sztuk: 20%; od 10 sztuk: 30%.",
+    "Ceny i dostępność produktów powinny być aktualizowane przez administratora.",
+    "Dane dostawy należy wykorzystywać wyłącznie do realizacji zamówienia.",
+    "Reklamacje i pytania kieruj do obsługi sklepu.",
+    "Zwroty i reklamacje są rozpatrywane zgodnie z obowiązującymi przepisami."
+  ]
+}

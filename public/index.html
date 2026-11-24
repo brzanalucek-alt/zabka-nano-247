@@ -1,1 +1,93 @@
-
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ŻABKA NANO 24/7</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#08752f;--panel:#075b27;--panel2:#06491f;--text:#ffffff;--muted:#e0f2e5;--gold:#06491f;--blue:#06491f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#056326ed;backdrop-filter:blur(12px);padding:12px 16px;border-bottom:1px solid #03451b}
+.top{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;letter-spacing:.08em;display:flex;align-items:center;gap:14px;font-size:27px;color:#fff}.brand img{width:112px;height:112px;object-fit:contain;border-radius:12px}.pill{border:1px solid #b9e4c6;border-radius:99px;padding:7px 11px;color:#fff;font-size:12px}
+main{max-width:1050px;margin:0 auto;padding:18px 16px 100px}
+.hero{background:linear-gradient(130deg,#075b27,#06491f 65%,#043b1a);padding:28px;border-radius:22px;margin:8px 0 18px;border:1px solid #168342}
+h1{font-size:29px;margin:0 0 7px;color:#fff;font-weight:900}.sub{color:#fff;margin:0;font-weight:700;font-size:16px}
+nav{display:flex;gap:8px;overflow:auto;padding:5px 0 15px}
+nav button,.btn{border:0;border-radius:12px;padding:11px 14px;background:#06491f;color:#fff;font-weight:750;cursor:pointer;white-space:nowrap}
+nav button.active,.btn.primary{background:#043b1a;color:#fff;outline:2px solid #b9e4c6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:13px}
+.card,.panel{background:var(--panel);border:1px solid #168342;border-radius:17px;overflow:hidden;color:#fff}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#06491f}
+.cardbody{padding:12px}.card h3{font-size:15px;margin:0 0 5px}.muted{color:var(--muted);font-size:12px}.price{font-size:17px;font-weight:800;margin:9px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.smallbtn{padding:8px 10px;font-size:13px}
+.panel{padding:16px;margin:10px 0}.hidden{display:none!important}
+input,textarea,select{width:100%;background:#06491f;color:#fff;border:1px solid #8ac99f;border-radius:10px;padding:11px;margin:5px 0 12px;font:inherit}
+label{font-size:13px;color:#fff}.qty{display:flex;align-items:center;gap:8px}.qty button{width:30px;height:30px;border:0;border-radius:8px;background:var(--panel2);color:white}
+hr{border:0;border-top:1px solid #30435a;margin:14px 0}.total{font-size:22px;font-weight:850}.stars{color:var(--gold);letter-spacing:2px}
+footer{position:fixed;bottom:0;left:0;right:0;background:#056326ee;border-top:1px solid #168342;padding:10px 15px;display:flex;justify-content:center;z-index:6}
+footer a{max-width:1050px;width:100%;text-align:center;text-decoration:none;color:white;background:#06491f;border:1px solid #b9e4c6;padding:12px;border-radius:12px;font-weight:750}
+.notice{background:#06491f;border:1px solid #8ac99f;color:#fff;padding:11px;border-radius:12px;font-size:12px;margin:12px 0}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style></head>
+<body>
+<header><div class="top"><div class="brand"><img src="zabka-logo.png" alt="Logo Żabka">ŻABKA NANO 24/7</div><div class="pill">WERSJA DEMO</div></div></header>
+<main>
+<section class="hero"><h1>DYSKONT CAŁODOBOWY</h1><p class="sub">Wielosztukuj, to się opłaca!</p></section>
+<nav id="tabs">
+<button class="active" data-tab="products">Produkty</button><button data-tab="cart">Koszyk <span id="cartCount">0</span></button><button data-tab="reviews">Opinie</button><button data-tab="rules">Zasady</button><button data-tab="admin" id="adminTab" class="hidden">Panel administratora</button>
+</nav>
+<section id="products" class="view"><div class="row"><h2>Nasze produkty</h2><span class="muted">18 pozycji</span></div><div id="productGrid" class="grid"></div></section>
+<section id="cart" class="view hidden"><h2>Twój koszyk</h2><div id="cartItems"></div><div class="panel"><div class="row"><span>Wartość produktów</span><b id="subtotal">0,00 zł</b></div><div class="row"><span>Rabat</span><b id="discount">0%</b></div><hr><div class="row"><span>Razem</span><span class="total" id="total">0,00 zł</span></div><p class="muted">5–9 sztuk: 20% rabatu • 10+ sztuk: 30% rabatu (łącznie).</p></div>
+<div class="panel"><h3>Dane dostawy — formularz demonstracyjny</h3><label><input type="radio" name="delivery" value="address" checked style="width:auto"> Adres</label><label><input type="radio" name="delivery" value="locker" style="width:auto"> Numer paczkomatu</label>
+<div id="addressFields"><label>Ulica i numer</label><input placeholder="Np. Przykładowa 12"><label>Kod pocztowy</label><input placeholder="00-000"><label>Miejscowość</label><input placeholder="Miejscowość"></div>
+<div id="lockerFields" class="hidden"><label>Numer paczkomatu</label><input placeholder="Np. ABC12M"></div>
+<div class="notice">Demo nie wysyła zamówień ani danych. W produkcyjnej wersji formularz, prywatność i wymagania przewoźnika trzeba skonfigurować przed uruchomieniem.</div>
+<button class="btn primary" onclick="alert('To tylko demonstracja. Prawdziwe zamówienia i płatności wymagają skonfigurowanego backendu oraz oficjalnego operatora płatności.')">Przejdź do podsumowania (demo)</button></div></section>
+<section id="reviews" class="view hidden"><h2>Opinie klientów</h2><div id="reviewList"></div></section>
+<section id="rules" class="view hidden"><h2>Zasady sklepu</h2><div id="rulesList" class="panel"></div></section>
+<section id="admin" class="view hidden"><h2>Panel administratora</h2>
+<div id="adminLogin" class="panel"><h3>Dostęp administratora</h3><p class="muted">Panel jest chroniony hasłem sprawdzanym przez Cloudflare Worker.</p><label>Hasło administratora</label><input id="adminPassword" type="password" autocomplete="current-password"><button class="btn primary" onclick="adminLogin()">Zaloguj</button><p id="adminLoginMsg" class="muted"></p></div>
+<div id="adminTools" class="hidden">
+<div class="panel"><h3>Edycja produktu</h3><label>Wybierz produkt</label><select id="editProduct"></select><label>Nazwa</label><input id="editName"><label>Cena (zł)</label><input id="editPrice" type="number" min="0" step=".01"><label>Opis</label><textarea id="editDesc" rows="2"></textarea><label>Zdjęcie produktu (plik)</label><input id="editImageFile" type="file" accept="image/*"><label>Lub adres zdjęcia (URL)</label><input id="editImage"><button class="btn primary" onclick="saveProduct()">Zapisz produkt</button></div>
+<div class="panel"><h3>Zarządzanie opiniami</h3><div id="adminReviewList"></div><hr><h4 id="reviewFormTitle">Dodaj opinię</h4><input type="hidden" id="adminReviewIndex"><label>Nazwa / nick</label><input id="adminReviewNick"><label>Ocena</label><select id="adminReviewStars"><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2</option><option value="1">1</option></select><label>Treść</label><textarea id="adminReviewText" rows="3"></textarea><button class="btn primary" onclick="saveAdminReview()">Zapisz opinię</button><button class="btn" onclick="clearReviewForm()">Wyczyść</button></div>
+<div class="panel"><h3>Zasady sklepu</h3><label>Jedna zasada w każdym wierszu</label><textarea id="adminRules" rows="7"></textarea><button class="btn primary" onclick="saveRules()">Zapisz zasady</button></div>
+<div class="panel"><h3>Kontakt operatora</h3><label>Link do publicznego profilu lub czatu Telegram</label><input id="operatorLink" placeholder="https://t.me/twoj_kanal"><button class="btn" onclick="saveOperator()">Zapisz link</button></div>
+<button class="btn" onclick="adminLogout()">Wyloguj administratora</button></div></section>
+</main>
+<footer><a id="operatorButton" href="https://t.me/" target="_blank" rel="noopener">◉ Kontakt z operatorem</a></footer>
+<script>
+const tg=window.Telegram?.WebApp; if(tg){tg.ready();tg.expand();}
+let data={products:[],reviews:[],rules:[]},cart={};let adminKey='';
+const money=n=>n.toLocaleString('pl-PL',{style:'currency',currency:'PLN'});
+async function init(){try{const r=await fetch('/api/data');if(r.ok){data=await r.json();}else{const local=await fetch('./demo-data.json');data=await local.json();}}catch(e){const local=await fetch('./demo-data.json');data=await local.json();}
+renderProducts();renderReviews();renderRules();setupAdmin();if(new URLSearchParams(location.search).get('admin')==='1')adminTab.classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));document.querySelectorAll('input[name=delivery]').forEach(x=>x.onchange=toggleDelivery);}
+function showTab(id){document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==='cart')renderCart();}
+function renderProducts(){document.getElementById('productGrid').innerHTML=data.products.map(p=>`<article class="card"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"><div class="cardbody"><h3>${esc(p.name)}</h3><div class="muted">${esc(p.description)}</div><div class="price">${money(p.price)}</div><button class="btn primary smallbtn" onclick="add(${p.id})">Dodaj do koszyka</button></div></article>`).join('');}
+function add(id){cart[id]=(cart[id]||0)+1;updateCount();}
+function updateCount(){document.getElementById('cartCount').textContent=Object.values(cart).reduce((a,b)=>a+b,0);}
+function renderCart(){let entries=Object.entries(cart).filter(([id,q])=>q>0),units=entries.reduce((s,[id,q])=>s+q,0),sub=entries.reduce((s,[id,q])=>s+data.products.find(p=>p.id==id).price*q,0),rate=units>=10?.30:units>=5?.20:0;
+document.getElementById('cartItems').innerHTML=entries.length?entries.map(([id,q])=>{let p=data.products.find(x=>x.id==id);return `<div class="panel"><div class="row"><b>${esc(p.name)}</b><b>${money(p.price*q)}</b></div><div class="row"><span class="muted">${money(p.price)} / szt.</span><div class="qty"><button onclick="change(${id},-1)">−</button>${q}<button onclick="change(${id},1)">+</button></div></div></div>`}).join(''):'<div class="panel muted">Koszyk jest pusty.</div>';
+document.getElementById('subtotal').textContent=money(sub);document.getElementById('discount').textContent=Math.round(rate*100)+'%';document.getElementById('total').textContent=money(sub*(1-rate));}
+function change(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);if(!cart[id])delete cart[id];updateCount();renderCart();}
+function renderReviews(){document.getElementById('reviewList').innerHTML=data.reviews.map(r=>`<div class="panel"><div class="row"><b>${esc(r.nick)}</b><span class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span></div><p>${esc(r.text)}</p><span class="muted">Opinia przykładowa / demonstracyjna</span></div>`).join('');}
+function addReview(){let nick=document.getElementById('nick').value.trim(),text=document.getElementById('reviewText').value.trim(),stars=+document.getElementById('rating').value;if(!nick||!text){alert('Wpisz nickname i treść opinii.');return}data.reviews.unshift({nick,stars,text});renderReviews();document.getElementById('nick').value='';document.getElementById('reviewText').value='';}
+function renderRules(){document.getElementById('rulesList').innerHTML='<ol>'+data.rules.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>';}
+function setupAdmin(){let sel=document.getElementById('editProduct');sel.innerHTML=data.products.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');sel.onchange=loadProduct;if(data.products.length)loadProduct();let link=localStorage.getItem('operatorLink')||'https://t.me/';document.getElementById('operatorLink').value=link;setOperator(link);renderAdminReviews();document.getElementById('adminRules').value=data.rules.join('\\n');}
+function loadProduct(){let p=data.products.find(x=>x.id==document.getElementById('editProduct').value);if(!p)return;editName.value=p.name;editPrice.value=p.price;editDesc.value=p.description;editImage.value=p.image;}
+async function apiSave(){const r=await fetch('/api/data',{method:'PUT',headers:{'Content-Type':'application/json','X-Admin-Password':adminKey},body:JSON.stringify(data)});if(!r.ok)throw new Error(await r.text());}
+async function adminLogin(){const pw=document.getElementById('adminPassword').value;const r=await fetch('/api/admin/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})});if(!r.ok){adminLoginMsg.textContent='Nieprawidłowe hasło lub brak konfiguracji Workera.';return;}adminKey=pw;document.getElementById('adminLogin').classList.add('hidden');document.getElementById('adminTools').classList.remove('hidden');adminTab.classList.remove('hidden');showTab('admin');}
+function adminLogout(){adminKey='';document.getElementById('adminTools').classList.add('hidden');document.getElementById('adminLogin').classList.remove('hidden');adminTab.classList.add('hidden');showTab('products');}
+async function saveProduct(){let p=data.products.find(x=>x.id==editProduct.value);if(!p)return;p.name=editName.value.trim()||p.name;p.price=Math.max(0,+editPrice.value||0);p.description=editDesc.value;let file=editImageFile.files[0];if(file){let fd=new FormData();fd.append('file',file);let up=await fetch('/api/upload',{method:'POST',headers:{'X-Admin-Password':adminKey},body:fd});if(!up.ok){alert('Nie udało się wgrać zdjęcia. Sprawdź konfigurację Storage.');return;}p.image=(await up.json()).url;}else if(editImage.value.trim())p.image=editImage.value.trim();try{await apiSave();renderProducts();setupAdmin();alert('Produkt i zdjęcie zapisane. Zmiana jest widoczna dla klientów.');}catch(e){alert('Nie udało się zapisać: '+e.message);}}
+function renderAdminReviews(){const box=document.getElementById('adminReviewList');if(!box)return;box.innerHTML=data.reviews.map((r,i)=>`<div class="panel"><b>${esc(r.nick)}</b> · ${'★'.repeat(r.stars)}<p>${esc(r.text)}</p><button class="btn smallbtn" onclick="editReview(${i})">Edytuj</button> <button class="btn smallbtn" onclick="deleteReview(${i})">Usuń</button></div>`).join('')||'<p class="muted">Brak opinii.</p>';}
+function editReview(i){let r=data.reviews[i];adminReviewIndex.value=i;adminReviewNick.value=r.nick;adminReviewStars.value=r.stars;adminReviewText.value=r.text;reviewFormTitle.textContent='Edytuj opinię';}
+function clearReviewForm(){adminReviewIndex.value='';adminReviewNick.value='';adminReviewStars.value='5';adminReviewText.value='';reviewFormTitle.textContent='Dodaj opinię';}
+async function saveAdminReview(){let nick=adminReviewNick.value.trim(),text=adminReviewText.value.trim();if(!nick||!text){alert('Uzupełnij nick i treść.');return;}let i=adminReviewIndex.value,r={nick,stars:+adminReviewStars.value,text};if(i==='')data.reviews.unshift(r);else data.reviews[+i]=r;try{await apiSave();renderReviews();renderAdminReviews();clearReviewForm();alert('Opinia zapisana dla wszystkich klientów.');}catch(e){alert('Błąd zapisu: '+e.message);}}
+async function deleteReview(i){if(!confirm('Usunąć tę opinię?'))return;data.reviews.splice(i,1);try{await apiSave();renderReviews();renderAdminReviews();}catch(e){alert('Błąd zapisu: '+e.message);}}
+async function saveRules(){data.rules=adminRules.value.split('\\n').map(x=>x.trim()).filter(Boolean);try{await apiSave();renderRules();alert('Zasady zapisane dla wszystkich klientów.');}catch(e){alert('Błąd zapisu: '+e.message);}}
+function saveOperator(){let v=operatorLink.value.trim();if(!/^https:\/\/t\.me\//.test(v)){alert('Podaj link w formacie https://t.me/...');return}localStorage.setItem('operatorLink',v);setOperator(v);alert('Zapisano link w tej przeglądarce.');}
+function setOperator(v){operatorButton.href=v;}
+function toggleDelivery(){let locker=document.querySelector('input[name=delivery]:checked').value==='locker';addressFields.classList.toggle('hidden',locker);lockerFields.classList.toggle('hidden',!locker);}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+init();setInterval(async()=>{try{const r=await fetch("/api/data");if(r.ok){const fresh=await r.json();data=fresh;renderProducts();renderReviews();renderRules();}}catch(e){}},15000);
+</script></body></html>
